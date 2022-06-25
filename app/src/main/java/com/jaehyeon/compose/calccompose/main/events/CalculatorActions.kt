@@ -1,4 +1,4 @@
-package com.jaehyeon.compose.calccompose
+package com.jaehyeon.compose.calccompose.main.events
 
 sealed class CalculatorActions {
     data class Number(val number: Int): CalculatorActions()

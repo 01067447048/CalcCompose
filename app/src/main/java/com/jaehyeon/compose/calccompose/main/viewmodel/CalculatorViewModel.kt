@@ -1,19 +1,32 @@
-package com.jaehyeon.compose.calccompose
+package com.jaehyeon.compose.calccompose.main.viewmodel
 
+import android.content.SharedPreferences
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.jaehyeon.compose.calccompose.main.events.CalculatorActions
+import com.jaehyeon.compose.calccompose.main.events.CalculatorOperation
+import com.jaehyeon.compose.calccompose.main.state.CalculatorState
+import com.jaehyeon.compose.calccompose.utils.ConvertUtils
+import com.jaehyeon.compose.calccompose.utils.SharedPreferenceHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 /**
  * Created by Jaehyeon on 2022/06/23.
  */
 @HiltViewModel
-class CalculatorViewModel: ViewModel() {
+class CalculatorViewModel @Inject constructor(
+    private val preference: SharedPreferenceHelper
+): ViewModel() {
 
     var state by mutableStateOf(CalculatorState())
         private set
+
+    init {
+        restoreResult()
+    }
 
     fun onAction(action: CalculatorActions) {
         when(action) {
@@ -59,6 +72,7 @@ class CalculatorViewModel: ViewModel() {
                 operation = null
 
             )
+            saveResult()
         }
     }
 
@@ -102,6 +116,14 @@ class CalculatorViewModel: ViewModel() {
         state = state.copy(
             number2 = state.number2 + number
         )
+    }
+
+    private fun saveResult() {
+        preference.result = ConvertUtils.state2String(state)
+    }
+
+    private fun restoreResult() {
+        state = ConvertUtils.string2State(preference.result)
     }
 
     companion object {

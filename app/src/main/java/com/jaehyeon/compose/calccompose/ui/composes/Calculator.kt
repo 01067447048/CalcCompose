@@ -1,6 +1,5 @@
-package com.jaehyeon.compose.calccompose
+package com.jaehyeon.compose.calccompose.ui.composes
 
-import android.hardware.lights.Light
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -13,6 +12,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jaehyeon.compose.calccompose.main.events.CalculatorActions
+import com.jaehyeon.compose.calccompose.main.events.CalculatorOperation
+import com.jaehyeon.compose.calccompose.main.state.CalculatorState
 import com.jaehyeon.compose.calccompose.ui.theme.LightGray
 import com.jaehyeon.compose.calccompose.ui.theme.Orange
 

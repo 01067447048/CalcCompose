@@ -1,4 +1,4 @@
-package com.jaehyeon.compose.calccompose
+package com.jaehyeon.compose.calccompose.ui.composes
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
