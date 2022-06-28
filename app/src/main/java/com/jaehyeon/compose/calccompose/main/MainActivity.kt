@@ -13,7 +13,9 @@ import com.jaehyeon.compose.calccompose.ui.composes.Calculator
 import com.jaehyeon.compose.calccompose.main.viewmodel.CalculatorViewModel
 import com.jaehyeon.compose.calccompose.ui.theme.CalcComposeTheme
 import com.jaehyeon.compose.calccompose.ui.theme.MediumGray
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

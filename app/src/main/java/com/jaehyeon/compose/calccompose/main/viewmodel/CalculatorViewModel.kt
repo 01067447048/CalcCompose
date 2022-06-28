@@ -24,6 +24,8 @@ class CalculatorViewModel @Inject constructor(
     var state by mutableStateOf(CalculatorState())
         private set
 
+    private var lastState by mutableStateOf(CalculatorState())
+
     init {
         restoreResult()
     }
@@ -66,6 +68,8 @@ class CalculatorViewModel @Inject constructor(
                 is CalculatorOperation.Divide -> number1 / number2
                 null -> return
             }
+
+            lastState = state
             state = state.copy(
                 number1 = result.toString().take(15),
                 number2 = "",
@@ -119,7 +123,7 @@ class CalculatorViewModel @Inject constructor(
     }
 
     private fun saveResult() {
-        preference.result = ConvertUtils.state2String(state)
+        preference.result = ConvertUtils.state2String(lastState)
     }
 
     private fun restoreResult() {
